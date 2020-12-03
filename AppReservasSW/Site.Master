@@ -55,6 +55,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Views/Vuelo.aspx">Vuelo</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Views/Aeropuerto.aspx">Aeropuerto</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Views/Pago.aspx">Pago</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Views/TipoPago.aspx">Tipo Pago</a></li>
                     </ul>
                 </div>
             </div>

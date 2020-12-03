@@ -19,6 +19,9 @@ namespace AppReservasSW.Views
         IEnumerable<Models.Reserva> reservas = new ObservableCollection<Models.Reserva>();
         ReservaManager reservaManager = new ReservaManager();
 
+        IEnumerable<Models.TipoPago> tipoPagos = new ObservableCollection<Models.TipoPago>();
+        TipoPagoManager tipoPagoManager = new TipoPagoManager();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -43,6 +46,13 @@ namespace AppReservasSW.Views
                 drpCodigoReservas.Items.Insert(0, new ListItem(Convert.ToString(reserva.RES_CODIGO), Convert.ToString(reserva.RES_CODIGO)));
 
             }
+            drpTipoPago.Items.Clear();
+            tipoPagos = await tipoPagoManager.ObtenerTipoPagos(VG.usuarioActual.CadenaToken);
+            foreach (Models.TipoPago tipoPago in tipoPagos)
+            {
+                drpTipoPago.Items.Insert(0, new ListItem (tipoPago.TPA_DESCRIPCION, Convert.ToString(tipoPago.TPA_CODIGO)));
+            }
+
 
             //aca agregar el tipo de pago automatico
 
@@ -65,7 +75,7 @@ namespace AppReservasSW.Views
                 {
                 
                     PAG_FECHA = Convert.ToDateTime(txtpagoFecha.Text),
-                    TPA_CODIGO = Convert.ToInt32( txtTipoPago.Text),
+                    TPA_CODIGO = Convert.ToInt32(drpTipoPago.SelectedValue.ToString()),
                     RES_CODIGO = Convert.ToInt32(drpCodigoReservas.SelectedValue.ToString()),
                     PAG_ESTADO = drpDisponibilidad.SelectedValue.ToString()
                     
@@ -103,7 +113,7 @@ namespace AppReservasSW.Views
 
 
 
-            if (txtTipoPago.Text.IsNullOrWhiteSpace())
+            if (drpTipoPago.SelectedValue.IsNullOrWhiteSpace())
             {
                 lblStatus.Text = "Debe ingresar el tipo de pago";
                 lblStatus.ForeColor = Color.Maroon;
@@ -196,7 +206,7 @@ namespace AppReservasSW.Views
 
             string RES_CODIGO = (grdPago.Rows[e.RowIndex].FindControl("drpCodigoReservaEdit") as DropDownList).Text.Trim();
             string PAG_FECHA = (grdPago.Rows[e.RowIndex].FindControl("txtPagFecha") as TextBox).Text.Trim();
-            string TPA_CODIGO = (grdPago.Rows[e.RowIndex].FindControl("txtTipoPago") as TextBox).Text.Trim();
+            string TPA_CODIGO = (grdPago.Rows[e.RowIndex].FindControl("drpTipoPagoEdit") as DropDownList).Text.Trim();
             string PAG_ESTADO = (grdPago.Rows[e.RowIndex].FindControl("drpEstadoEdit") as DropDownList).Text;
 
 
@@ -250,6 +260,20 @@ namespace AppReservasSW.Views
                 }
 
             }
+
+
+            if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState & DataControlRowState.Edit) == DataControlRowState.Edit)
+            {
+                DropDownList ddList = (DropDownList)e.Row.FindControl("drpTipoPagoEdit");
+
+                tipoPagos = await tipoPagoManager.ObtenerTipoPagos(VG.usuarioActual.CadenaToken);
+
+                foreach (Models.TipoPago tipoPago in tipoPagos)
+                {
+                    ddList.Items.Insert(0, new ListItem(tipoPago.TPA_DESCRIPCION, Convert.ToString(tipoPago.TPA_CODIGO)));
+                }
+            }
+
         }
 
 
