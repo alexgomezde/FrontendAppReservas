@@ -297,6 +297,7 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\Aeropuerto.aspx" />
+    <Content Include="Views\Avion.aspx" />
     <Content Include="Views\Habitacion.aspx" />
     <Content Include="Views\Hotel.aspx" />
     <Content Include="Views\Pago.aspx" />
@@ -324,12 +325,14 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AerolineaManager.cs" />
     <Compile Include="Controllers\AeropuertoManager.cs" />
     <Compile Include="Controllers\HabitacionManager.cs" />
     <Compile Include="Controllers\HotelManager.cs" />
     <Compile Include="Controllers\PagoManager.cs" />
     <Compile Include="Controllers\ReservaManager.cs" />
     <Compile Include="Controllers\UsuarioManager.cs" />
+    <Compile Include="Controllers\AvionManager.cs" />
     <Compile Include="Controllers\VueloManager.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -355,6 +358,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Aeropuerto.cs" />
     <Compile Include="Models\Habitacion.cs" />
     <Compile Include="Models\Hotel.cs" />
@@ -362,6 +366,7 @@
     <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Reserva.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Avion.cs" />
     <Compile Include="Models\Vuelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -399,6 +404,13 @@
     </Compile>
     <Compile Include="Views\Aeropuerto.aspx.designer.cs">
       <DependentUpon>Aeropuerto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Avion.aspx.cs">
+      <DependentUpon>Avion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Avion.aspx.designer.cs">
+      <DependentUpon>Avion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Habitacion.aspx.cs">
       <DependentUpon>Habitacion.aspx</DependentUpon>
