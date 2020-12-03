@@ -11,17 +11,17 @@ namespace AppReservasSW.Views
 {
 
 
-    public partial class Habitacion
+    public partial class Pago
     {
 
         /// <summary>
-        /// Control grdHabitaciones.
+        /// Control grdPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdHabitaciones;
+        protected global::System.Web.UI.WebControls.GridView grdPago;
 
         /// <summary>
         /// Control Label9.
@@ -33,13 +33,13 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.Label Label9;
 
         /// <summary>
-        /// Control drpNombreHoteles.
+        /// Control drpCodigoReservas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpNombreHoteles;
+        protected global::System.Web.UI.WebControls.DropDownList drpCodigoReservas;
 
         /// <summary>
         /// Control Label3.
@@ -51,13 +51,13 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// Control txtNumeroHabitacion.
+        /// Control txtpagoFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumeroHabitacion;
+        protected global::System.Web.UI.WebControls.TextBox txtpagoFecha;
 
         /// <summary>
         /// Control Label10.
@@ -69,67 +69,13 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.Label Label10;
 
         /// <summary>
-        /// Control txtTelefono.
+        /// Control txtTipoPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
-
-        /// <summary>
-        /// Control Label11.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label11;
-
-        /// <summary>
-        /// Control txtCapacidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCapacidad;
-
-        /// <summary>
-        /// Control Label12.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
-
-        /// <summary>
-        /// Control txtTipo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipo;
-
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// Control txtDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox txtTipoPago;
 
         /// <summary>
         /// Control drpDisponibilidad.
@@ -139,24 +85,6 @@ namespace AppReservasSW.Views
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpDisponibilidad;
-
-        /// <summary>
-        /// Control Label2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-
-        /// <summary>
-        /// Control txtPrecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrecio;
 
         /// <summary>
         /// Control btnAgregar.

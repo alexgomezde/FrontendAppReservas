@@ -299,6 +299,7 @@
     <Content Include="Views\Aeropuerto.aspx" />
     <Content Include="Views\Habitacion.aspx" />
     <Content Include="Views\Hotel.aspx" />
+    <Content Include="Views\Pago.aspx" />
     <Content Include="Views\Reserva.aspx" />
     <Content Include="Views\Vuelo.aspx" />
     <Content Include="Web.config" />
@@ -326,6 +327,7 @@
     <Compile Include="Controllers\AeropuertoManager.cs" />
     <Compile Include="Controllers\HabitacionManager.cs" />
     <Compile Include="Controllers\HotelManager.cs" />
+    <Compile Include="Controllers\PagoManager.cs" />
     <Compile Include="Controllers\ReservaManager.cs" />
     <Compile Include="Controllers\UsuarioManager.cs" />
     <Compile Include="Controllers\VueloManager.cs" />
@@ -357,6 +359,7 @@
     <Compile Include="Models\Habitacion.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Reserva.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Vuelo.cs" />
@@ -410,6 +413,13 @@
     </Compile>
     <Compile Include="Views\Hotel.aspx.designer.cs">
       <DependentUpon>Hotel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pago.aspx.cs">
+      <DependentUpon>Pago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pago.aspx.designer.cs">
+      <DependentUpon>Pago.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Reserva.aspx.cs">
       <DependentUpon>Reserva.aspx</DependentUpon>
