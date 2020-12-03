@@ -69,13 +69,13 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.Label Label10;
 
         /// <summary>
-        /// Control txtTipoPago.
+        /// Control drpTipoPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipoPago;
+        protected global::System.Web.UI.WebControls.DropDownList drpTipoPago;
 
         /// <summary>
         /// Control drpDisponibilidad.

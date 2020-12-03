@@ -57,13 +57,14 @@
 
             <asp:TemplateField HeaderText="Tipo de Pago">
                 <ItemTemplate>
-                    <%# Eval("TPA_CODIGO")%>
+                    <asp:Label ID="lblCodigoTipoPago" Text='<%# Eval("TPA_CODIGO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtTipoPago" Text='<%# Eval("TPA_CODIGO") %>' runat="server" CssClass="GridViewEditRow" />
+                    <asp:DropDownList ID="drpTipoPagoEdit" runat="server">
+                    </asp:DropDownList>
                 </EditItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="txtTípoPagoFooter" runat="server" />
+                    <asp:TextBox ID="txtTipoPagoCodigoFooter" runat="server" />
                 </FooterTemplate>
             </asp:TemplateField>
 
@@ -113,7 +114,7 @@
 
         <div class="form-inline mb-3"> 
             <asp:Label ID="Label10" runat="server" Text="Tipo de pago" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtTipoPago" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:DropDownList ID="drpTipoPago" runat="server" CssClass="form-control col-md-8"></asp:DropDownList>
         </div>
 
         <div class="form-inline mb-3">
