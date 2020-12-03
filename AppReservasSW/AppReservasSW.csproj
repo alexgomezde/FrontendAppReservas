@@ -326,6 +326,8 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AeropuertoManager.cs" />
+    <Compile Include="Controllers\AsientoManager.cs" />
+    <Compile Include="Controllers\FacturaManager.cs" />
     <Compile Include="Controllers\HabitacionManager.cs" />
     <Compile Include="Controllers\HotelManager.cs" />
     <Compile Include="Controllers\PagoManager.cs" />
@@ -358,6 +360,8 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Aeropuerto.cs" />
+    <Compile Include="Models\Asiento.cs" />
+    <Compile Include="Models\Factura.cs" />
     <Compile Include="Models\Habitacion.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
