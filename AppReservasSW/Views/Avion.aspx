@@ -26,33 +26,31 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-              <asp:TemplateField HeaderText="Aeropuerto">
+              <asp:TemplateField HeaderText="Aerolinea">
                 <ItemTemplate>
-                    <asp:Label ID="lblAeropuerto" Text='<%# Eval("AER_CODIGO") %>' runat="server" />
+                    <asp:Label ID="lblAerolinea" Text='<%# Eval("AER_CODIGO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:DropDownList ID="drpAeropuertoEdit" runat="server">
+                    <asp:DropDownList ID="drpAerolineaEdit" runat="server">
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="Codigo Fabricante">
+            <asp:TemplateField HeaderText="Nombre Fabricante">
                 <ItemTemplate>
                     <asp:Label ID="lblAvionFabricante" Text='<%# Eval("AVI_FABRICANTE") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:DropDownList ID="drpAvionFabricanteEdit" runat="server">
-                    </asp:DropDownList>
+                  <asp:TextBox ID="txtAvionFabricanteEdit" Text='<%# Eval("AVI_FABRICANTE") %>' runat="server" CssClass="GridViewEditRow" />
                 </EditItemTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="Avion Tipo">
                 <ItemTemplate>
-                    <asp:Label ID="lblAvionTipo" Text='<%# Eval("AER_TIPO") %>' runat="server" />
+                    <asp:Label ID="lblAvionTipo" Text='<%# Eval("AVI_TIPO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:DropDownList ID="drpAvionTipoEdit" runat="server">
-                    </asp:DropDownList>
+                     <asp:TextBox ID="txtAvionTipoEdit" Text='<%# Eval("AVI_TIPO") %>' runat="server" CssClass="GridViewEditRow" />
                 </EditItemTemplate>
             </asp:TemplateField>
 
@@ -95,8 +93,8 @@
     <div class="col-md-6">
 
         <div class="form-inline mb-3">
-            <asp:Label ID="Label1" runat="server" Text="Código Aeropuerto" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:DropDownList ID="drpAeropuertoCodigo" runat="server" CssClass="form-control col-md-8">
+            <asp:Label ID="Label1" runat="server" Text="Código Aerolinea" CssClass="col-form-label col-md-4"></asp:Label>
+            <asp:DropDownList ID="drpAerolineaCodigo" runat="server" CssClass="form-control col-md-8">
              </asp:DropDownList>
         </div>
 

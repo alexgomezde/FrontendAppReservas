@@ -33,13 +33,13 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Control drpAeropuertoCodigo.
+        /// Control drpAerolineaCodigo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpAeropuertoCodigo;
+        protected global::System.Web.UI.WebControls.DropDownList drpAerolineaCodigo;
 
         /// <summary>
         /// Control Label2.

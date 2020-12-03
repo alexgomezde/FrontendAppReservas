@@ -16,8 +16,8 @@ namespace AppReservasSW.Views
         IEnumerable<Models.Avion> aviones = new ObservableCollection<Models.Avion>();
         AvionManager avionManager = new AvionManager();
 
-        IEnumerable<Models.Aeropuerto> aeropuertos = new ObservableCollection<Models.Aeropuerto>();
-        AeropuertoManager aeropuertoManager = new AeropuertoManager();
+        IEnumerable<Models.Aerolinea> aerolineas = new ObservableCollection<Models.Aerolinea>();
+        AerolineaManager aerolineaManager = new AerolineaManager();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,13 +34,13 @@ namespace AppReservasSW.Views
             grdAviones.DataSource = aviones.ToList();
             grdAviones.DataBind();
 
-            aeropuertos = await aeropuertoManager.ObtenerAeropuertos(VG.usuarioActual.CadenaToken);
+            aerolineas = await aerolineaManager.ObtenerAerolineas(VG.usuarioActual.CadenaToken);
 
-            drpAeropuertoCodigo.Items.Clear();
+            drpAerolineaCodigo.Items.Clear();
       
-            foreach (Models.Aeropuerto aeropuerto in aeropuertos)
+            foreach (Models.Aerolinea aerolinea in aerolineas)
             {
-                drpAeropuertoCodigo.Items.Insert(0, new ListItem(aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
+                drpAerolineaCodigo.Items.Insert(0, new ListItem(aerolinea.AER_NOMBRE, Convert.ToString(aerolinea.AER_CODIGO)));
                 
             }
         }
@@ -54,7 +54,7 @@ namespace AppReservasSW.Views
                 Models.Avion avion = new Models.Avion()
                 {
 
-                    AER_CODIGO = Convert.ToInt32(drpAeropuertoCodigo.SelectedValue.ToString()),
+                    AER_CODIGO = Convert.ToInt32(drpAerolineaCodigo.SelectedValue.ToString()),
                     AVI_FABRICANTE = txtAvionFabricante.Text.ToString(),
                     AVI_TIPO = txtAvionTipo.Text.ToString(),
                     AVI_CAPACIDAD = Convert.ToInt32(txtAvionCapacidad.Text.ToString()),
@@ -122,9 +122,9 @@ namespace AppReservasSW.Views
         {
             Label lblCode = (Label)grdAviones.Rows[e.RowIndex].Cells[0].FindControl("lblCodigoAvion");
 
-            string aerCodigo = (grdAviones.Rows[e.RowIndex].FindControl("drpAeropuertoEdit") as TextBox).Text;
-            string aviFabricante = (grdAviones.Rows[e.RowIndex].FindControl("drpAvionFabricanteEdit") as DropDownList).Text;
-            string aviTipo = (grdAviones.Rows[e.RowIndex].FindControl("drpAvionTipoEdit") as DropDownList).Text;
+            string aerCodigo = (grdAviones.Rows[e.RowIndex].FindControl("drpAerolineaEdit") as DropDownList).Text;
+            string aviFabricante = (grdAviones.Rows[e.RowIndex].FindControl("txtAvionFabricanteEdit") as TextBox).Text;
+            string aviTipo = (grdAviones.Rows[e.RowIndex].FindControl("txtAvionTipoEdit") as TextBox).Text;
             string aviCapacidad = (grdAviones.Rows[e.RowIndex].FindControl("txtAvionCapacidadEdit") as TextBox).Text;
             string aviEstado = (grdAviones.Rows[e.RowIndex].FindControl("drpEstadoEdit") as DropDownList).Text;
 
@@ -169,13 +169,13 @@ namespace AppReservasSW.Views
             if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState & DataControlRowState.Edit) == DataControlRowState.Edit)
             {
 
-                DropDownList ddList = (DropDownList)e.Row.FindControl("drpAeropuertoEdit");
+                DropDownList ddList = (DropDownList)e.Row.FindControl("drpAerolineaEdit");
 
-                aeropuertos = await aeropuertoManager.ObtenerAeropuertos(VG.usuarioActual.CadenaToken);
+                aerolineas = await aerolineaManager.ObtenerAerolineas(VG.usuarioActual.CadenaToken);
 
-                foreach (Models.Aeropuerto aeropuerto in aeropuertos)
+                foreach (Models.Aerolinea aerolinea in aerolineas)
                 {
-                    ddList.Items.Insert(0, new ListItem(aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
+                    ddList.Items.Insert(0, new ListItem(aerolinea.AER_NOMBRE, Convert.ToString(aerolinea.AER_CODIGO)));
                 }
 
             }
