@@ -298,6 +298,7 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\Aerolinea.aspx" />
     <Content Include="Views\Aeropuerto.aspx" />
+    <Content Include="Views\Asiento.aspx" />
     <Content Include="Views\Avion.aspx" />
     <Content Include="Views\Habitacion.aspx" />
     <Content Include="Views\Hotel.aspx" />
@@ -419,6 +420,12 @@
     </Compile>
     <Compile Include="Views\Aeropuerto.aspx.designer.cs">
       <DependentUpon>Aeropuerto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Asiento.aspx.cs">
+      <DependentUpon>Asiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Asiento.aspx.designer.cs">
+      <DependentUpon>Asiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Avion.aspx.cs">
       <DependentUpon>Avion.aspx</DependentUpon>
