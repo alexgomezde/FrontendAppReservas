@@ -296,6 +296,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\Aerolinea.aspx" />
     <Content Include="Views\Aeropuerto.aspx" />
     <Content Include="Views\Avion.aspx" />
     <Content Include="Views\Habitacion.aspx" />
@@ -404,6 +405,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Aerolinea.aspx.cs">
+      <DependentUpon>Aerolinea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Aerolinea.aspx.designer.cs">
+      <DependentUpon>Aerolinea.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Aeropuerto.aspx.cs">
       <DependentUpon>Aeropuerto.aspx</DependentUpon>
