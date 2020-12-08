@@ -300,6 +300,7 @@
     <Content Include="Views\Aeropuerto.aspx" />
     <Content Include="Views\Asiento.aspx" />
     <Content Include="Views\Avion.aspx" />
+    <Content Include="Views\Factura.aspx" />
     <Content Include="Views\Habitacion.aspx" />
     <Content Include="Views\Hotel.aspx" />
     <Content Include="Views\Pago.aspx" />
@@ -433,6 +434,12 @@
     </Compile>
     <Compile Include="Views\Avion.aspx.designer.cs">
       <DependentUpon>Avion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Factura.aspx.cs">
+      <DependentUpon>Factura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Factura.aspx.designer.cs">
+      <DependentUpon>Factura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Habitacion.aspx.cs">
       <DependentUpon>Habitacion.aspx</DependentUpon>
