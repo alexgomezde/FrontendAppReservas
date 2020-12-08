@@ -304,7 +304,9 @@
     <Content Include="Views\Habitacion.aspx" />
     <Content Include="Views\Hotel.aspx" />
     <Content Include="Views\Pago.aspx" />
+    <Content Include="Views\Pais.aspx" />
     <Content Include="Views\Reserva.aspx" />
+    <Content Include="Views\Tarifa.aspx" />
     <Content Include="Views\TipoPago.aspx" />
     <Content Include="Views\Vuelo.aspx" />
     <Content Include="Web.config" />
@@ -336,7 +338,9 @@
     <Compile Include="Controllers\HabitacionManager.cs" />
     <Compile Include="Controllers\HotelManager.cs" />
     <Compile Include="Controllers\PagoManager.cs" />
+    <Compile Include="Controllers\PaisManager.cs" />
     <Compile Include="Controllers\ReservaManager.cs" />
+    <Compile Include="Controllers\TarifaManager.cs" />
     <Compile Include="Controllers\TipoPagoManager.cs" />
     <Compile Include="Controllers\UsuarioManager.cs" />
     <Compile Include="Controllers\AvionManager.cs" />
@@ -373,7 +377,9 @@
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Pago.cs" />
+    <Compile Include="Models\Pais.cs" />
     <Compile Include="Models\Reserva.cs" />
+    <Compile Include="Models\Tarifa.cs" />
     <Compile Include="Models\TipoPago.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Avion.cs" />
@@ -424,6 +430,7 @@
     </Compile>
     <Compile Include="Views\Asiento.aspx.cs">
       <DependentUpon>Asiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Asiento.aspx.designer.cs">
       <DependentUpon>Asiento.aspx</DependentUpon>
@@ -437,6 +444,7 @@
     </Compile>
     <Compile Include="Views\Factura.aspx.cs">
       <DependentUpon>Factura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Factura.aspx.designer.cs">
       <DependentUpon>Factura.aspx</DependentUpon>
@@ -462,12 +470,24 @@
     <Compile Include="Views\Pago.aspx.designer.cs">
       <DependentUpon>Pago.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pais.aspx.cs">
+      <DependentUpon>Pais.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pais.aspx.designer.cs">
+      <DependentUpon>Pais.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Reserva.aspx.cs">
       <DependentUpon>Reserva.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Reserva.aspx.designer.cs">
       <DependentUpon>Reserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tarifa.aspx.cs">
+      <DependentUpon>Tarifa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tarifa.aspx.designer.cs">
+      <DependentUpon>Tarifa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\TipoPago.aspx.cs">
       <DependentUpon>TipoPago.aspx</DependentUpon>
