@@ -19,6 +19,15 @@ namespace AppReservasSW.Views
         IEnumerable<Models.Aeropuerto> aeropuertos = new ObservableCollection<Models.Aeropuerto>();
         AeropuertoManager aeropuertoManager = new AeropuertoManager();
 
+        IEnumerable<Models.Asiento> asientos = new ObservableCollection<Models.Asiento>();
+        AsientoManager asientoManager = new AsientoManager();
+
+        IEnumerable<Models.Avion> aviones = new ObservableCollection<Models.Avion>();
+        AvionManager avionManager = new AvionManager();
+
+        IEnumerable<Models.Tarifa> tarifas = new ObservableCollection<Models.Tarifa>();
+        TarifaManager tarifaManager = new TarifaManager();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -42,9 +51,38 @@ namespace AppReservasSW.Views
 
             foreach (Models.Aeropuerto aeropuerto in aeropuertos)
             {
-                drpAeropuertoOrigen.Items.Insert(0, new ListItem(aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
-                drpAeropuertoDestino.Items.Insert(0, new ListItem(aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
+                drpAeropuertoOrigen.Items.Insert(0, new ListItem(aeropuerto.AEP_CODIGO + " - " + aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
+                drpAeropuertoDestino.Items.Insert(0, new ListItem(aeropuerto.AEP_CODIGO + " - " + aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
             }
+
+            asientos = await asientoManager.ObtenerAsientos(VG.usuarioActual.CadenaToken);
+
+            drpAsientos.Items.Clear();
+
+            foreach (Models.Asiento asiento in asientos)
+            {
+                drpAsientos.Items.Insert(0, new ListItem( asiento.ASI_CODIGO + " - " + asiento.ASI_LETRA + asiento.ASI_FILA, Convert.ToString(asiento.ASI_CODIGO)));
+            }
+
+            aviones = await avionManager.ObtenerAviones(VG.usuarioActual.CadenaToken);
+
+            drpAviones.Items.Clear();
+
+            foreach (Models.Avion avion in aviones)
+            {
+                drpAviones.Items.Insert(0, new ListItem(avion.AVI_CODIGO + " - " + avion.AVI_FABRICANTE, Convert.ToString(avion.AVI_CODIGO)));
+            }
+
+            tarifas = await tarifaManager.ObtenerTarifas(VG.usuarioActual.CadenaToken);
+
+            drpTarifas.Items.Clear();
+
+            foreach (Models.Tarifa tarifa in tarifas)
+            {
+                drpTarifas.Items.Insert(0, new ListItem(tarifa.TAR_CODIGO + " - " + tarifa.TAR_CLASE, Convert.ToString(tarifa.TAR_CODIGO)));
+            }
+
+
         }
 
 
@@ -56,11 +94,11 @@ namespace AppReservasSW.Views
                 Models.Vuelo vuelo = new Models.Vuelo()
                 {
 
-                    VUE_CODIGO_ASI = Convert.ToInt32(txtCodigoAsiento.Text),
+                    VUE_CODIGO_ASI = Convert.ToInt32(drpAsientos.SelectedValue.ToString()),
                     AER_ORIGEN_COD = Convert.ToInt32(drpAeropuertoOrigen.SelectedValue.ToString()),
                     AER_DESTINO_COD = Convert.ToInt32(drpAeropuertoDestino.SelectedValue.ToString()),
-                    AVI_CODIGO = Convert.ToInt32(txtCodigoAvion.Text),
-                    TAR_CODIGO = Convert.ToInt32(txtCodigoTarifa.Text),
+                    AVI_CODIGO = Convert.ToInt32(drpAviones.SelectedValue.ToString()),
+                    TAR_CODIGO = Convert.ToInt32(drpTarifas.SelectedValue.ToString()),
                     VUE_ESTADO = drpEstado.SelectedValue.ToString()
 
                 };
@@ -125,11 +163,11 @@ namespace AppReservasSW.Views
         {
             Label lblCode = (Label)grdVuelos.Rows[e.RowIndex].Cells[0].FindControl("lblCodigoVuelo");
 
-            string codAsiento = (grdVuelos.Rows[e.RowIndex].FindControl("txtCodAsiEdit") as TextBox).Text;
+            string codAsiento = (grdVuelos.Rows[e.RowIndex].FindControl("drpCodigoAsientoEdit") as DropDownList).Text;
             string aerOrigen = (grdVuelos.Rows[e.RowIndex].FindControl("drpAeropuertoOrigenEdit") as DropDownList).Text;
             string aerDestino = (grdVuelos.Rows[e.RowIndex].FindControl("drpAeropuertoDestinoEdit") as DropDownList).Text;
-            string codAvion = (grdVuelos.Rows[e.RowIndex].FindControl("txtCodAviEdit") as TextBox).Text;
-            string codTarifa = (grdVuelos.Rows[e.RowIndex].FindControl("txtTarCodEdit") as TextBox).Text;
+            string codAvion = (grdVuelos.Rows[e.RowIndex].FindControl("drpAvionEdit") as DropDownList).Text;
+            string codTarifa = (grdVuelos.Rows[e.RowIndex].FindControl("drpTarifaEdit") as DropDownList).Text;
             string estado = (grdVuelos.Rows[e.RowIndex].FindControl("drpEstadoEdit") as DropDownList).Text;
 
 
@@ -174,6 +212,7 @@ namespace AppReservasSW.Views
             if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState & DataControlRowState.Edit) == DataControlRowState.Edit)
             {
 
+                
                 DropDownList ddList = (DropDownList)e.Row.FindControl("drpAeropuertoOrigenEdit");
                 DropDownList ddList2 = (DropDownList)e.Row.FindControl("drpAeropuertoDestinoEdit");
 
@@ -181,8 +220,39 @@ namespace AppReservasSW.Views
 
                 foreach (Models.Aeropuerto aeropuerto in aeropuertos)
                 {
-                    ddList.Items.Insert(0, new ListItem(aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
-                    ddList2.Items.Insert(0, new ListItem(aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
+                    ddList.Items.Insert(0, new ListItem(aeropuerto.AEP_CODIGO + " - " + aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
+                    ddList2.Items.Insert(0, new ListItem(aeropuerto.AEP_CODIGO + " - " + aeropuerto.AEP_NOMBRE, Convert.ToString(aeropuerto.AEP_CODIGO)));
+                }
+
+                DropDownList ddListAsientos = (DropDownList)e.Row.FindControl("drpCodigoAsientoEdit");
+
+                asientos = await asientoManager.ObtenerAsientos(VG.usuarioActual.CadenaToken);
+
+                foreach (Models.Asiento asiento in asientos)
+                {
+                    ddListAsientos.Items.Insert(0, new ListItem(asiento.ASI_CODIGO + " - " + asiento.ASI_LETRA + asiento.ASI_FILA, Convert.ToString(asiento.ASI_CODIGO)));
+                    
+                }
+
+                DropDownList ddAviones = (DropDownList)e.Row.FindControl("drpAvionEdit");
+
+                aviones = await avionManager.ObtenerAviones(VG.usuarioActual.CadenaToken);
+
+                foreach (Models.Avion avion in aviones)
+                {
+                    ddAviones.Items.Insert(0, new ListItem(avion.AVI_CODIGO + " - " + avion.AVI_FABRICANTE, Convert.ToString(avion.AVI_CODIGO)));
+ 
+                }
+
+
+                DropDownList ddlTarifas = (DropDownList)e.Row.FindControl("drpTarifaEdit");
+
+                tarifas = await tarifaManager.ObtenerTarifas(VG.usuarioActual.CadenaToken);
+
+                foreach (Models.Tarifa tarifa in tarifas)
+                {
+                    ddlTarifas.Items.Insert(0, new ListItem(tarifa.TAR_CODIGO + " - " + tarifa.TAR_CLASE, Convert.ToString(tarifa.TAR_CODIGO)));
+
                 }
 
             }
@@ -191,30 +261,6 @@ namespace AppReservasSW.Views
 
         private bool ValidarInsertar()
         {
-
-            if (txtCodigoAsiento.Text.IsNullOrWhiteSpace())
-            {
-                lblStatus.Text = "Debe ingresar el código del asiento";
-                lblStatus.ForeColor = Color.Maroon;
-                lblStatus.Visible = true;
-                return false;
-            }
-
-            if (txtCodigoAvion.Text.IsNullOrWhiteSpace())
-            {
-                lblStatus.Text = "Debe ingresar el código del avión";
-                lblStatus.ForeColor = Color.Maroon;
-                lblStatus.Visible = true;
-                return false;
-            }
-
-            if (txtCodigoTarifa.Text.IsNullOrWhiteSpace())
-            {
-                lblStatus.Text = "Debe ingresar el código de la tarifa";
-                lblStatus.ForeColor = Color.Maroon;
-                lblStatus.Visible = true;
-                return false;
-            }
 
             return true;
         }

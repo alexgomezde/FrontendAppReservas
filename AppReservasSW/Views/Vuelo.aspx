@@ -29,10 +29,11 @@
 
             <asp:TemplateField HeaderText="Código Asiento">
                 <ItemTemplate>
-                    <asp:Label ID="lblCodigoAsiento" Text='<%# Eval("VUE_CODIGO_ASI") %>' runat="server" />
+                    <asp:Label ID="lblCodigoAsiento" Text='<%# Eval("VUE_CODIGO_ASI") %>' runat="server" CssClass="GridViewEditRow" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtCodAsiEdit" Text='<%# Eval("VUE_CODIGO_ASI") %>' runat="server" CssClass="GridViewEditRow" />
+                    <asp:DropDownList ID="drpCodigoAsientoEdit" runat="server">
+                    </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
 
@@ -41,7 +42,7 @@
                     <asp:Label ID="lblAeropuertoOrigen" Text='<%# Eval("AER_ORIGEN_COD") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:DropDownList ID="drpAeropuertoOrigenEdit" runat="server">
+                    <asp:DropDownList ID="drpAeropuertoOrigenEdit" runat="server" CssClass="GridViewEditRow">
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
@@ -51,35 +52,38 @@
                     <asp:Label ID="lblAeropuertoDestino" Text='<%# Eval("AER_DESTINO_COD") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:DropDownList ID="drpAeropuertoDestinoEdit" runat="server">
+                    <asp:DropDownList ID="drpAeropuertoDestinoEdit" runat="server" CssClass="GridViewEditRow">
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="Código Avión">
                 <ItemTemplate>
-                    <%# Eval("AVI_CODIGO")%>
+                    <asp:Label ID="lblAvion" Text='<%# Eval("AVI_CODIGO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtCodAviEdit" Text='<%# Eval("AVI_CODIGO") %>' runat="server" CssClass="GridViewEditRow" />
+                    <asp:DropDownList ID="drpAvionEdit" runat="server" CssClass="GridViewEditRow">
+                    </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="Código Tarifa">
                 <ItemTemplate>
-                    <%# Eval("TAR_CODIGO")%>
+                    <asp:Label ID="lblTarifa" Text='<%# Eval("TAR_CODIGO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtTarCodEdit" Text='<%# Eval("TAR_CODIGO") %>' runat="server" CssClass="GridViewEditRow" />
+                    <asp:DropDownList ID="drpTarifaEdit" runat="server" CssClass="GridViewEditRow">
+                    </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
+
 
             <asp:TemplateField HeaderText="Estado">
                 <ItemTemplate>
                     <asp:Label ID="lblEstado" Text='<%# Eval("VUE_ESTADO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:DropDownList ID="drpEstadoEdit" runat="server" SelectedValue='<%# Bind("VUE_ESTADO") %>'>
+                    <asp:DropDownList ID="drpEstadoEdit" runat="server" SelectedValue='<%# Bind("VUE_ESTADO") %>' CssClass="GridViewEditRow">
                         <asp:ListItem Value="D">Disponible</asp:ListItem>
                         <asp:ListItem Value="N">No Disponible</asp:ListItem>
                     </asp:DropDownList>
@@ -104,8 +108,9 @@
     <div class="col-md-6">
 
         <div class="form-inline mb-3">
-            <asp:Label ID="Label1" runat="server" Text="Código Asiento" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtCodigoAsiento" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:Label  runat="server" Text="Código Asiento" CssClass="col-form-label col-md-4"></asp:Label>
+            <asp:DropDownList ID="drpAsientos" runat="server" CssClass="form-control col-md-8">
+             </asp:DropDownList>
         </div>
 
         <div class="form-inline mb-3">
@@ -121,13 +126,17 @@
         </div>
 
         <div class="form-inline mb-3">
-            <asp:Label ID="Label11" runat="server" Text="Código Avión" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtCodigoAvion" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:Label  runat="server" Text="Código Avión" CssClass="col-form-label col-md-4"></asp:Label>
+            <asp:DropDownList ID="drpAviones" runat="server" CssClass="form-control col-md-8">
+             </asp:DropDownList>
         </div>
-    
+
         <div class="form-inline mb-3">
-            <asp:Label ID="Label12" runat="server" Text="Código Tarifa" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtCodigoTarifa" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:Label  runat="server" Text="Código Tarifa" CssClass="col-form-label col-md-4"></asp:Label>
+            <asp:DropDownList ID="drpTarifas" runat="server" CssClass="form-control col-md-8">
+                <asp:ListItem Selected="True" Value="D">Disponible</asp:ListItem>
+                <asp:ListItem Value="N">No Disponible</asp:ListItem>
+             </asp:DropDownList>
         </div>
 
         <div class="form-inline mb-3">

@@ -33,12 +33,13 @@
                 </EditItemTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="País Código">
+            <asp:TemplateField HeaderText="Código País">
                 <ItemTemplate>
-                    <%# Eval("PAIS_CODIGO") %>
+                    <asp:Label ID="lblCodigoPais" Text='<%# Eval("PAIS_CODIGO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtPaisEdit" Text='<%# Eval("PAIS_CODIGO")%>' runat="server" CssClass="GridViewEditRow" />
+                    <asp:DropDownList ID="drpPaisEdit" runat="server">
+                    </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
 
@@ -65,8 +66,9 @@
         </div>
 
         <div class="form-inline mb-3">
-            <asp:Label ID="Label3" runat="server" Text="País" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtPais" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:Label  runat="server" Text="País" CssClass="col-form-label col-md-4"></asp:Label>
+            <asp:DropDownList ID="drpPaises" runat="server" CssClass="form-control col-md-8">
+            </asp:DropDownList>
         </div>
 
         <div class="form-inline mt-3 mb-1">

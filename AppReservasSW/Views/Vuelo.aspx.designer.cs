@@ -24,22 +24,13 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.GridView grdVuelos;
 
         /// <summary>
-        /// Label1 control.
+        /// drpAsientos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// txtCodigoAsiento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoAsiento;
+        protected global::System.Web.UI.WebControls.DropDownList drpAsientos;
 
         /// <summary>
         /// Label6 control.
@@ -78,40 +69,22 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.DropDownList drpAeropuertoDestino;
 
         /// <summary>
-        /// Label11 control.
+        /// drpAviones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label11;
+        protected global::System.Web.UI.WebControls.DropDownList drpAviones;
 
         /// <summary>
-        /// txtCodigoAvion control.
+        /// drpTarifas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoAvion;
-
-        /// <summary>
-        /// Label12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
-
-        /// <summary>
-        /// txtCodigoTarifa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoTarifa;
+        protected global::System.Web.UI.WebControls.DropDownList drpTarifas;
 
         /// <summary>
         /// drpEstado control.

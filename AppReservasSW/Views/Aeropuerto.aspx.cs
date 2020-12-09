@@ -15,6 +15,9 @@ namespace AppReservasSW.Views
     {
         IEnumerable<Models.Aeropuerto> aeropuertos = new ObservableCollection<Models.Aeropuerto>();
         AeropuertoManager aeropuertoManager = new AeropuertoManager();
+
+        IEnumerable<Models.Pais> paises = new ObservableCollection<Models.Pais>();
+        PaisManager paisManager = new PaisManager();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -29,6 +32,14 @@ namespace AppReservasSW.Views
             aeropuertos = await aeropuertoManager.ObtenerAeropuertos(VG.usuarioActual.CadenaToken);
             grdAeropuertos.DataSource = aeropuertos.ToList();
             grdAeropuertos.DataBind();
+
+            paises = await paisManager.ObtenerPaises(VG.usuarioActual.CadenaToken);
+
+            drpPaises.Items.Clear();
+            foreach (Models.Pais pais in paises)
+            {
+                drpPaises.Items.Insert(0, new ListItem(pais.PAIS_CODIGO + " - " + pais.PAIS_NOMBRE, Convert.ToString(pais.PAIS_CODIGO)));
+            }
         }
 
         protected async void btnAgregar_Click(object sender, EventArgs e)
@@ -40,7 +51,7 @@ namespace AppReservasSW.Views
                 {
 
                     AEP_NOMBRE = txtNombreAeropuerto.Text,
-                    PAIS_CODIGO = Convert.ToInt32(txtPais.Text)
+                    PAIS_CODIGO = Convert.ToInt32(drpPaises.SelectedValue.ToString())
                 };
 
                 aeropuertoIngresado =
@@ -102,7 +113,7 @@ namespace AppReservasSW.Views
             Label lblCode = (Label)grdAeropuertos.Rows[e.RowIndex].Cells[0].FindControl("lblCodigoAeropuerto");
 
             string aepNombre = (grdAeropuertos.Rows[e.RowIndex].FindControl("txtNombreAeropuertoEdit") as TextBox).Text;
-            string aepPais = (grdAeropuertos.Rows[e.RowIndex].FindControl("txtPaisEdit") as TextBox).Text;
+            string aepPais = (grdAeropuertos.Rows[e.RowIndex].FindControl("drpPaisEdit") as DropDownList).Text;
 
             if (ValidarModificar(aepNombre, aepPais))
             {
@@ -136,8 +147,21 @@ namespace AppReservasSW.Views
 
         }
 
-        protected void grdAeropuertos_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected async void grdAeropuertos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState & DataControlRowState.Edit) == DataControlRowState.Edit)
+            {
+
+                DropDownList ddList = (DropDownList)e.Row.FindControl("drpPaisEdit");
+              
+                paises = await paisManager.ObtenerPaises(VG.usuarioActual.CadenaToken);
+
+                foreach (Models.Pais pais in paises)
+                {
+                    ddList.Items.Insert(0, new ListItem(pais.PAIS_CODIGO + " - " + pais.PAIS_NOMBRE, Convert.ToString(pais.PAIS_CODIGO)));
+                }
+
+            }
 
         }
 
@@ -147,14 +171,6 @@ namespace AppReservasSW.Views
             if (txtNombreAeropuerto.Text.IsNullOrWhiteSpace())
             {
                 lblStatus.Text = "Debe ingresar el nombre del aeropuerto";
-                lblStatus.ForeColor = Color.Maroon;
-                lblStatus.Visible = true;
-                return false;
-            }
-
-            if (txtPais.Text.IsNullOrWhiteSpace())
-            {
-                lblStatus.Text = "Debe ingresar el país";
                 lblStatus.ForeColor = Color.Maroon;
                 lblStatus.Visible = true;
                 return false;
