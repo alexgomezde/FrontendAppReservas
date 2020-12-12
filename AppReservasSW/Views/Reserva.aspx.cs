@@ -160,6 +160,31 @@ namespace AppReservasSW.Views
 
 
 
+            DateTime RES_FECHA_INGRESO = Convert.ToDateTime(txtFechaIngreso.Text);
+            DateTime RES_FECHA_SALIDA = Convert.ToDateTime(txtFechaSalida.Text);
+            DateTime RES_FECHA_VUELO = Convert.ToDateTime(txtFechaVuelo.Text);
+            int IngresoVSSalida = DateTime.Compare(RES_FECHA_INGRESO, RES_FECHA_SALIDA);
+            int VueloVSSalida = DateTime.Compare(RES_FECHA_VUELO, RES_FECHA_SALIDA);
+
+
+            if (IngresoVSSalida > 0)
+            {
+                lblStatus.Text = "La fecha de ingreso no puede ser despúes que la de salida";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+            if (VueloVSSalida > 0)
+            {
+                lblStatus.Text = "La fecha de vuelo no puede ser despúes que la de salida";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+           
+
 
             return true;
         }
@@ -215,6 +240,33 @@ namespace AppReservasSW.Views
                 lblStatus.Visible = true;
                 return false;
             }
+
+
+            DateTime RES_FECHA_INGRESO = Convert.ToDateTime(fecIngreso);
+            DateTime RES_FECHA_SALIDA = Convert.ToDateTime(fecSalida);
+            DateTime RES_FECHA_VUELO = Convert.ToDateTime(fecVuelo);
+            int IngresoVSSalida = DateTime.Compare(RES_FECHA_INGRESO, RES_FECHA_SALIDA);
+            int VueloVSSalida = DateTime.Compare(RES_FECHA_VUELO, RES_FECHA_SALIDA);
+
+
+            if (IngresoVSSalida > 0)
+            {
+                lblStatus.Text = "La fecha de ingreso no puede ser despúes que la de salida";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+            if (VueloVSSalida > 0)
+            {
+                lblStatus.Text = "La fecha de vuelo no puede ser despúes que la de salida";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+
+
 
             return true;
         }
