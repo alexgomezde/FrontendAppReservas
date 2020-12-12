@@ -169,10 +169,17 @@ namespace AppReservasSW.Views
 
         private bool ValidarInsertar()
         {
-
             if (txtNumeroHabitacion.Text.IsNullOrWhiteSpace())
             {
                 lblStatus.Text = "Debe ingresar el número de la habitación";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+            if (txtNumeroHabitacion.Text.All(char.IsNumber) == false)
+            {
+                lblStatus.Text = "Fila número habitacion debe de ser un número";
                 lblStatus.ForeColor = Color.Maroon;
                 lblStatus.Visible = true;
                 return false;
@@ -185,6 +192,15 @@ namespace AppReservasSW.Views
                 lblStatus.Visible = true;
                 return false;
             }
+
+            if (txtCapacidad.Text.All(char.IsNumber) == false)
+            {
+                lblStatus.Text = "Fila capacidad debe de ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
 
             if (txtTipo.Text.IsNullOrWhiteSpace())
             {
@@ -210,6 +226,17 @@ namespace AppReservasSW.Views
                 return false;
             }
 
+            if (txtPrecio.Text.All(char.IsNumber) == false)
+            {
+                lblStatus.Text = "Fila precio debe de ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+
+
+
             return true;
         }
 
@@ -232,6 +259,13 @@ namespace AppReservasSW.Views
                 return false;
             }
 
+            if (habNumero.All(char.IsLetter) == true)
+            {
+                lblStatus.Text = "Fila del numero habitacion debe ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
             if (habCapacidad.IsNullOrWhiteSpace())
             {
                 lblStatus.Text = "Debe ingresar la capacidad de la habitación";
@@ -239,6 +273,15 @@ namespace AppReservasSW.Views
                 lblStatus.Visible = true;
                 return false;
             }
+
+            if (habCapacidad.All(char.IsLetter) == true)
+            {
+                lblStatus.Text = "Fila del capacidad debe ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
 
             if (habTipo.IsNullOrWhiteSpace())
             {

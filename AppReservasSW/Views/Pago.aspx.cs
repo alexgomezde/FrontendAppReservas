@@ -37,6 +37,8 @@ namespace AppReservasSW.Views
             grdPago.DataSource = pagos.ToList();
             grdPago.DataBind();
 
+            Calendar2.Visible = false;
+
 
             reservas = await reservaManager.ObtenerReservas(VG.usuarioActual.CadenaToken);
 
@@ -205,7 +207,7 @@ namespace AppReservasSW.Views
 
 
             string RES_CODIGO = (grdPago.Rows[e.RowIndex].FindControl("drpCodigoReservaEdit") as DropDownList).Text.Trim();
-            string PAG_FECHA = (grdPago.Rows[e.RowIndex].FindControl("txtPagFecha") as TextBox).Text.Trim();
+            string PAG_FECHA = (grdPago.Rows[e.RowIndex].FindControl("Calendar21") as Calendar).SelectedDate.ToShortDateString();
             string TPA_CODIGO = (grdPago.Rows[e.RowIndex].FindControl("drpTipoPagoEdit") as DropDownList).Text.Trim();
             string PAG_ESTADO = (grdPago.Rows[e.RowIndex].FindControl("drpEstadoEdit") as DropDownList).Text;
 
@@ -276,6 +278,22 @@ namespace AppReservasSW.Views
 
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            if (Calendar2.Visible)
+            {
+                Calendar2.Visible = false;
+            }
+            else
+            {
+                Calendar2.Visible = true;
+            }
+        }
 
+        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+        {
+            txtpagoFecha.Text = Calendar2.SelectedDate.ToShortDateString();
+            Calendar2.Visible = false;
+        }
     }
 }

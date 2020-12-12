@@ -82,7 +82,7 @@ span.psw {
     <label for="Nombre"><b>Nombre:</b></label>
     <asp:TextBox  runat="server" Placeholder="Ingrese su nombre" ID="Nombre" CssClass="form-control" />
     <asp:RequiredFieldValidator runat="server" ControlToValidate="Nombre" CssClass="text-danger" ErrorMessage="El campo de nombre es obligatorio." />
-    <br /><label for="Identificacion"> "><b>Identificacion:</b></label>
+    <br /><label for="Identificacion"> "<b>Identificacion:</b></label>
     <asp:TextBox  runat="server" Placeholder="Ingrese su identificacion" ID="Identificacion" CssClass="form-control" />
     <asp:RequiredFieldValidator runat="server" ControlToValidate="Identificacion" CssClass="text-danger" ErrorMessage="El campo de nombre de usuario es obligatorio." />
     <br /><label for="Email"><b>Email</b></label>
@@ -98,7 +98,7 @@ span.psw {
 
     <asp:Button type="button" CssClass="button" ID="btnRegistro"  runat="server" Text="Registrarme" OnClick="btnRegistro_Click" /> 
     <br><br>
-    <asp:Button type="button" CssClass="cancelbtn" ID="btnCancelar"  runat="server" Text="Cancelar" />
+    <asp:Button type="button"  CausesValidation="false" CssClass="cancelbtn" ID="btnCancelar"  runat="server" Text="Cancelar" />
     
     <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                 <p class="text-danger">

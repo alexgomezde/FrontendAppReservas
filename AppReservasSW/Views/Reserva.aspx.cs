@@ -22,6 +22,9 @@ namespace AppReservasSW.Views
         IEnumerable<Models.Habitacion> habitaciones = new ObservableCollection<Models.Habitacion>();
         HabitacionManager habitacionManager = new HabitacionManager();
 
+        IEnumerable<Models.Vuelo> vuelos = new ObservableCollection<Models.Vuelo>();
+        VueloManager vueloManager = new VueloManager();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,6 +49,15 @@ namespace AppReservasSW.Views
             {
                 drpCodigosHabitacion.Items.Insert(0, new ListItem(habitacion.HAB_DESCRIPCION, Convert.ToString(habitacion.HAB_CODIGO)));
             }
+
+
+            vuelos = await vueloManager.ObtenerVuelos(VG.usuarioActual.CadenaToken);
+
+            drpVuelo.Items.Clear();
+            foreach (Models.Vuelo vuelo in vuelos)
+            {
+                drpVuelo.Items.Insert(0, new ListItem(Convert.ToString(vuelo.VUE_CODIGO), Convert.ToString(vuelo.VUE_CODIGO)));
+            }
         }
 
         async protected void btnIngresar_Click(object sender, EventArgs e)
@@ -59,7 +71,7 @@ namespace AppReservasSW.Views
 
                     USU_CODIGO = Convert.ToInt32(txtUsuarioCodigo.Text),
                     HAB_CODIGO = Convert.ToInt32(drpCodigosHabitacion.SelectedValue.ToString()),
-                    VUE_CODIGO = Convert.ToInt32(txtVueloCodigo.Text),
+                    VUE_CODIGO = Convert.ToInt32(drpVuelo.SelectedValue.ToString()),
                     RES_COSTO = Convert.ToDecimal(txtCosto.Text),
                     RES_FECHA_INGRESO = Convert.ToDateTime(txtFechaIngreso.Text),
                     RES_FECHA_SALIDA = Convert.ToDateTime(txtFechaSalida.Text),
@@ -223,7 +235,7 @@ namespace AppReservasSW.Views
 
             string usuCodigo = (grdReservas.Rows[e.RowIndex].FindControl("txtUsuCodigo") as TextBox).Text;
             string habCodigo = (grdReservas.Rows[e.RowIndex].FindControl("drpHabitacionEdit") as DropDownList).Text;
-            string vueCodigo = (grdReservas.Rows[e.RowIndex].FindControl("txtVueCodigo") as TextBox).Text;
+            string vueCodigo = (grdReservas.Rows[e.RowIndex].FindControl("drpVueloEdit") as DropDownList).Text;
             string resCosto = (grdReservas.Rows[e.RowIndex].FindControl("txtResCosto") as TextBox).Text;
             string fecIngreso = (grdReservas.Rows[e.RowIndex].FindControl("txtResFechaIngreso") as TextBox).Text;
             string fecSalida = (grdReservas.Rows[e.RowIndex].FindControl("txtResFechaSalida") as TextBox).Text;
@@ -284,6 +296,14 @@ namespace AppReservasSW.Views
                     ddList.Items.Insert(0, new ListItem(habitacion.HAB_DESCRIPCION, Convert.ToString(habitacion.HAB_CODIGO)));
                 }
 
+                DropDownList ddList2 = (DropDownList)e.Row.FindControl("drpVueloEdit");
+
+                vuelos = await vueloManager.ObtenerVuelos(VG.usuarioActual.CadenaToken);
+
+                foreach (Models.Vuelo vuelo in vuelos)
+                {
+                    ddList2.Items.Insert(0, new ListItem(Convert.ToString(vuelo.VUE_CODIGO), Convert.ToString(vuelo.VUE_CODIGO)));
+                }
             }
         }
     }

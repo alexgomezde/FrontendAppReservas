@@ -209,6 +209,21 @@ namespace AppReservasSW.Views
                 return false;
             }
 
+            if (txtTelefono.Text.All(char.IsNumber) == false)
+            {
+                lblStatus.Text = "Fila telefono debe de ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+
+
+
+
+
+
+
             return true;
         }
 
@@ -248,9 +263,22 @@ namespace AppReservasSW.Views
                 return false;
             }
 
+
+            if (telefono.All(char.IsLetter) == true)
+            {
+                lblStatus.Text = "Fila telefono debe de ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+
+
+
+
             return true;
         }
 
 
-    }    
+    }
 }

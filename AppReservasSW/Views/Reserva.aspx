@@ -31,16 +31,16 @@
                 </FooterTemplate>
             </asp:TemplateField>
 
+            
+
             <asp:TemplateField HeaderText="Código Usuario">
                 <ItemTemplate>
-                    <%# Eval("USU_CODIGO")%>
+                    <asp:Label ID="lblCodigoUsuario" Text='<%# Eval("USU_CODIGO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtUsuCodigo" Text='<%# Eval("USU_CODIGO") %>' runat="server" CssClass="GridViewEditRow" />
+                    <asp:TextBox ID="txtUsuCodigo" runat="server" CssClass="GridViewEditRow">
+                    </asp:TextBox>
                 </EditItemTemplate>
-                <FooterTemplate>
-                    <asp:TextBox ID="txtUsuCodigoFooter" runat="server" />
-                </FooterTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="Código Habitación">
@@ -56,7 +56,7 @@
                 </FooterTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="Código Vuelo">
+            <%--<asp:TemplateField HeaderText="Código Vuelo">
                 <ItemTemplate>
                     <%# Eval("VUE_CODIGO")%>
                 </ItemTemplate>
@@ -66,7 +66,21 @@
                 <FooterTemplate>
                     <asp:TextBox ID="txtVueCodigoFooter" runat="server" />
                 </FooterTemplate>
+            </asp:TemplateField>--%>
+
+            <asp:TemplateField HeaderText="Código Vuelo">
+                <ItemTemplate>
+                    <asp:Label ID="lbCodigoVuelo" Text='<%# Eval("VUE_CODIGO") %>' runat="server" />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:DropDownList ID="drpVueloEdit" runat="server" CssClass="GridViewEditRow">
+                    </asp:DropDownList>
+                </EditItemTemplate>
             </asp:TemplateField>
+
+
+
+
 
             <asp:TemplateField HeaderText="Costo">
                 <ItemTemplate>
@@ -161,7 +175,7 @@
 
         <div class="form-inline mb-3">
             <asp:Label ID="Label2" runat="server" Text="Código Vuelo" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtVueloCodigo" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:DropDownList ID="drpVuelo" runat="server" CssClass="form-control col-md-8"></asp:DropDownList>
         </div>
 
         <div class="form-inline mb-3">

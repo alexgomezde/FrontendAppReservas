@@ -43,16 +43,35 @@
                 </FooterTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="Fecha de Pago">
+            <%--<asp:TemplateField HeaderText="Fecha de Pago">
                 <ItemTemplate>
                     <%# Eval("PAG_FECHA")%>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtPagFecha" Text='<%# Eval("PAG_FECHA") %>' runat="server" CssClass="GridViewEditRow" />
+
                 </EditItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtPagFechaFooter" runat="server" />
                 </FooterTemplate>
+            </asp:TemplateField>--%>
+
+            <asp:TemplateField HeaderText="Fecha de pago">
+                <ItemTemplate>
+                    <asp:Label ID="lbCalendario" Text='<%# Eval("PAG_FECHA") %>' runat="server" CssClass="GridViewEditRow" />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    
+         <asp:Calendar ID="Calendar21" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+            <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+            <OtherMonthDayStyle ForeColor="#999999" />
+            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+            <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+            <TodayDayStyle BackColor="#CCCCCC" />
+        </asp:Calendar>
+                </EditItemTemplate>
+                
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="Tipo de Pago">
@@ -74,8 +93,8 @@
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:DropDownList ID="drpEstadoEdit" runat="server">
-                        <asp:ListItem Value="A">Activo</asp:ListItem>
-                        <asp:ListItem Value="N">Anulado</asp:ListItem>
+                        <asp:ListItem Value="D">Disponible</asp:ListItem>
+                        <asp:ListItem Value="N">No Disponible</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <FooterTemplate>
@@ -83,6 +102,7 @@
                 </FooterTemplate>
             </asp:TemplateField>
 
+            
             
 
             <asp:TemplateField HeaderText="Acciones">
@@ -95,6 +115,8 @@
                     <asp:ImageButton ImageUrl="/Images/close.png" runat="server" CommandName="Cancel" ToolTip="Cancelar" />
                 </EditItemTemplate>
             </asp:TemplateField>
+
+
         </Columns>
 
     </asp:GridView>
@@ -109,8 +131,10 @@
 
         <div class="form-inline mb-3">
             <asp:Label ID="Label3" runat="server" Text="Fecha Pago" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtpagoFecha" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:TextBox ID="txtpagoFecha" runat="server" CssClass="form-control col-md-8" Enabled="False"></asp:TextBox>
         </div>
+
+        <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Ver calendario" OnClick="Button2_Click"/>
 
         <div class="form-inline mb-3"> 
             <asp:Label ID="Label10" runat="server" Text="Tipo de pago" CssClass="col-form-label col-md-4"></asp:Label>
@@ -125,7 +149,17 @@
              </asp:DropDownList>
         </div>
         <p></p>
+            <br />
+        <asp:Calendar ID="Calendar2" runat="server" BackColor="White" BorderColor="White" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="453px" OnSelectionChanged="Calendar2_SelectionChanged" BorderWidth="1px">
+            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+            <NextPrevStyle Font-Size="8pt" ForeColor="#333333" Font-Bold="True" VerticalAlign="Bottom" />
+            <OtherMonthDayStyle ForeColor="#999999" />
+            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+            <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" BorderColor="Black" BorderWidth="4px" />
+            <TodayDayStyle BackColor="#CCCCCC" />
+        </asp:Calendar>
 
+        <br />
 
         <div class="form-inline mt-3 mb-1">
             <asp:Button ID="btnAgregar" CssClass="btn btn-primary col-md-12 mt-3" runat="server" Text="Agregar" OnClick="btnIngresar_Click"  />

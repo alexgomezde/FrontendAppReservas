@@ -60,6 +60,15 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.TextBox txtpagoFecha;
 
         /// <summary>
+        /// Control Button2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
+
+        /// <summary>
         /// Control Label10.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace AppReservasSW.Views
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpDisponibilidad;
+
+        /// <summary>
+        /// Control Calendar2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar Calendar2;
 
         /// <summary>
         /// Control btnAgregar.

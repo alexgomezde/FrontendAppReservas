@@ -209,6 +209,25 @@ namespace AppReservasSW.Views
                 return false;
             }
 
+            if (txtAvionCapacidad.Text.All(char.IsNumber) == false)
+            {
+                lblStatus.Text = "Fila capacidad debe de ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+            if (txtAvionCapacidad.Text.All(char.IsNumber) == false)
+            {
+                lblStatus.Text = "Fila precio debe de ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+
+
+
             return true;
         }
 
@@ -239,6 +258,26 @@ namespace AppReservasSW.Views
                 lblStatus.Visible = true;
                 return false;
             }
+
+
+            if (aviCapacidad.All(char.IsLetter) == true)
+            {
+                lblStatus.Text = "Fila capacidad debe de ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+
+
+
+
+
+
+
+
+
+
 
             return true;
         }
