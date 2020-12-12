@@ -38,23 +38,64 @@
                 </FooterTemplate>
                </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="Clase">
+
+                         <asp:TemplateField HeaderText="Clase">
+                <ItemTemplate>
+                    <asp:Label ID="lblClase" Text='<%# Eval("TAR_CLASE") %>' runat="server" CssClass="GridViewEditRow" />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:DropDownList ID="drpClaseEdit" runat="server">
+                        <asp:ListItem Value="P">Preferencial</asp:ListItem>
+                        <asp:ListItem Value="B">Basica</asp:ListItem>
+                    </asp:DropDownList>
+                </EditItemTemplate>
+                <FooterTemplate>
+                    <asp:TextBox ID="txtHotCategoriaFooter" runat="server" />
+                </FooterTemplate>
+            </asp:TemplateField>
+
+
+
+
+
+
+    <%--        <asp:TemplateField HeaderText="Clase">
                 <ItemTemplate>
                     <%# Eval("TAR_CLASE") %>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtClaseEdit" Text='<%# Eval("TAR_CLASE")%>' runat="server" />
                 </EditItemTemplate>
-            </asp:TemplateField>
+            </asp:TemplateField>--%>
 
-            <asp:TemplateField HeaderText="Precio">
+
+
+
+           <%-- <asp:TemplateField HeaderText="Precio">
                 <ItemTemplate>
                     <%# Eval("TAR_PRECIO") %>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtPrecioEdit" Text='<%# Eval("TAR_PRECIO")%>' runat="server" />
                 </EditItemTemplate>
+            </asp:TemplateField>--%>
+
+
+            <asp:TemplateField HeaderText="Precio">
+                <ItemTemplate>
+                    <%# Eval("TAR_PRECIO")%>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox  ID="txtPrecioEdit" Text='<%# Eval("TAR_PRECIO") %>' runat="server" CssClass="GridViewEditRow" />
+                </EditItemTemplate>
+                <FooterTemplate>
+                    <asp:TextBox ID="txtTarPrecioFooter" runat="server" />
+                </FooterTemplate>
             </asp:TemplateField>
+
+
+
+
 
                  <asp:TemplateField HeaderText="Impuesto">
                 <ItemTemplate>
@@ -71,8 +112,8 @@
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:DropDownList ID="drpEstadoEdit" runat="server">
-                        <asp:ListItem Value="P">Preferencial</asp:ListItem>
-                        <asp:ListItem Value="B">Basica</asp:ListItem>
+                        <asp:ListItem Value="A">Activa</asp:ListItem>
+                        <asp:ListItem Value="N">No Activa</asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <FooterTemplate>
@@ -97,9 +138,12 @@
 
     <div class="col-md-6">
 
-        <div class="form-inline mb-3">
-            <asp:Label ID="Label1" runat="server" Text="Clase Tarifa" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtClase" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <div class="form-inline mb-3">
+            <asp:Label  runat="server" Text="Estado" CssClass="col-form-label col-md-4"></asp:Label>
+            <asp:DropDownList ID="drpClase" runat="server" CssClass="form-control col-md-8">
+                <asp:ListItem Selected="True" Value="P">Preferencial</asp:ListItem>
+                <asp:ListItem Value="B">Basica</asp:ListItem>
+             </asp:DropDownList>
         </div>
 
         <div class="form-inline mb-3">
@@ -116,8 +160,8 @@
         <div class="form-inline mb-3">
             <asp:Label  runat="server" Text="Estado" CssClass="col-form-label col-md-4"></asp:Label>
             <asp:DropDownList ID="drpEstado" runat="server" CssClass="form-control col-md-8">
-                <asp:ListItem Selected="True" Value="P">Preferencial</asp:ListItem>
-                <asp:ListItem Value="B">Basica</asp:ListItem>
+                <asp:ListItem Selected="True" Value="A">Activa</asp:ListItem>
+                <asp:ListItem Value="N">No Activa</asp:ListItem>
              </asp:DropDownList>
         </div>
 

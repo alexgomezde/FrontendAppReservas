@@ -264,6 +264,15 @@ namespace AppReservasSW.Views
                 return false;
             }
 
+            if (habPrecio.All(char.IsLetter) == true)
+            {
+                lblStatus.Text = "Fila del precio debe ser un número";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
+
             return true;
         }
 

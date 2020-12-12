@@ -42,8 +42,8 @@ namespace AppReservasSW.Views
                 Models.Tarifa tarifaIngresado = new Models.Tarifa();
                 Models.Tarifa tarifa = new Models.Tarifa()
                 {
-                
-                    TAR_CLASE = txtClase.Text,
+              
+                    TAR_CLASE = drpClase.SelectedValue.ToString(),
                     TAR_PRECIO = Convert.ToDecimal(txtPrecio.Text),
                     TAR_IMPUESTO = Convert.ToInt32(txtImpuesto.Text),
                     TAR_ESTADO = drpEstado.SelectedValue.ToString()
@@ -114,8 +114,8 @@ namespace AppReservasSW.Views
         {
             Label lblCode = (Label)grdTarifa.Rows[e.RowIndex].Cells[0].FindControl("lblCodigoTarifa");
 
-            string tarClase = (grdTarifa.Rows[e.RowIndex].FindControl("txtClaseEdit") as TextBox).Text;
-            string tarPrecio = (grdTarifa.Rows[e.RowIndex].FindControl("txtPrecioEdit") as TextBox).Text;
+            string tarClase = (grdTarifa.Rows[e.RowIndex].FindControl("drpClaseEdit") as DropDownList).Text;
+            string tarPrecio = (grdTarifa.Rows[e.RowIndex].FindControl("txtPrecioEdit") as TextBox).Text.Trim();
             string tarImpuesto = (grdTarifa.Rows[e.RowIndex].FindControl("txtImpuestoEdit") as TextBox).Text;
             string tarEstado = (grdTarifa.Rows[e.RowIndex].FindControl("drpEstadoEdit") as DropDownList).Text;
 
@@ -164,17 +164,9 @@ namespace AppReservasSW.Views
         private bool ValidarInsertar()
         {
 
-            if (txtClase.Text.IsNullOrWhiteSpace())
+            if (drpClase.SelectedValue.IsNullOrWhiteSpace())
             {
-                lblStatus.Text = "Debe ingresar la clase";
-                lblStatus.ForeColor = Color.Maroon;
-                lblStatus.Visible = true;
-                return false;
-            }
-
-            if (txtClase.Text.All(char.IsNumber) == true)
-            {
-                lblStatus.Text = "Fila clase no acepta números";
+                lblStatus.Text = "Debe ingresar el estado de la tarifa";
                 lblStatus.ForeColor = Color.Maroon;
                 lblStatus.Visible = true;
                 return false;
@@ -229,15 +221,7 @@ namespace AppReservasSW.Views
 
             if (tarClase.IsNullOrWhiteSpace())
             {
-                lblStatus.Text = "Debe ingresar la clase de la tarifa";
-                lblStatus.ForeColor = Color.Maroon;
-                lblStatus.Visible = true;
-                return false;
-            }
-
-            if (tarClase.All(char.IsNumber) == true)
-            {
-                lblStatus.Text = "Fila de clase no acepta números";
+                lblStatus.Text = "Debe ingresar el estado de la tarifa";
                 lblStatus.ForeColor = Color.Maroon;
                 lblStatus.Visible = true;
                 return false;
@@ -252,7 +236,8 @@ namespace AppReservasSW.Views
                 return false;
             }
 
-            if (tarPrecio.All(char.IsNumber) == false)
+         
+            if (tarPrecio.All(char.IsLetter) == true)
             {
                 lblStatus.Text = "Fila del precio debe ser un número";
                 lblStatus.ForeColor = Color.Maroon;
