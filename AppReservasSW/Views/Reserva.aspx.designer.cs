@@ -114,6 +114,24 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.TextBox txtFechaIngreso;
 
         /// <summary>
+        /// Control verCalendarioIngreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button verCalendarioIngreso;
+
+        /// <summary>
+        /// Control calendarioIngreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calendarioIngreso;
+
+        /// <summary>
         /// Control Label7.
         /// </summary>
         /// <remarks>
@@ -132,6 +150,24 @@ namespace AppReservasSW.Views
         protected global::System.Web.UI.WebControls.TextBox txtFechaSalida;
 
         /// <summary>
+        /// Control vercalendarioSalida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button vercalendarioSalida;
+
+        /// <summary>
+        /// Control calendarioSalida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calendarioSalida;
+
+        /// <summary>
         /// Control Label14.
         /// </summary>
         /// <remarks>
@@ -148,6 +184,24 @@ namespace AppReservasSW.Views
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaVuelo;
+
+        /// <summary>
+        /// Control verVuelo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button verVuelo;
+
+        /// <summary>
+        /// Control calendarioVuelo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calendarioVuelo;
 
         /// <summary>
         /// Control drpEstado.

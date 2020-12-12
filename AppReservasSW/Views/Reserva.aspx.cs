@@ -36,6 +36,9 @@ namespace AppReservasSW.Views
 
         private async void InicializarControles()
         {
+            calendarioIngreso.Visible = false;
+            calendarioVuelo.Visible = false;
+            calendarioSalida.Visible = false;
 
             reservaciones = await reservaManager.ObtenerReservas(VG.usuarioActual.CadenaToken);
             grdReservas.DataSource = reservaciones.ToList();
@@ -117,7 +120,27 @@ namespace AppReservasSW.Views
                 return false;
             }
 
-
+            if (calendarioSalida.SelectedDate.ToShortDateString().Equals("1/1/0001"))
+            {
+                lblStatus.Text = "Debe Ingresar una fecha";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+            if (calendarioVuelo.SelectedDate.ToShortDateString().Equals("1/1/0001"))
+            {
+                lblStatus.Text = "Debe Ingresar una fecha";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+            if (calendarioIngreso.SelectedDate.ToShortDateString().Equals("1/1/0001"))
+            {
+                lblStatus.Text = "Debe Ingresar una fecha";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
 
             if (txtFechaIngreso.Text.IsNullOrWhiteSpace())
             {
@@ -134,6 +157,9 @@ namespace AppReservasSW.Views
                 lblStatus.Visible = true;
                 return false;
             }
+
+
+
 
             return true;
         }
@@ -237,9 +263,9 @@ namespace AppReservasSW.Views
             string habCodigo = (grdReservas.Rows[e.RowIndex].FindControl("drpHabitacionEdit") as DropDownList).Text;
             string vueCodigo = (grdReservas.Rows[e.RowIndex].FindControl("drpVueloEdit") as DropDownList).Text;
             string resCosto = (grdReservas.Rows[e.RowIndex].FindControl("txtResCosto") as TextBox).Text;
-            string fecIngreso = (grdReservas.Rows[e.RowIndex].FindControl("txtResFechaIngreso") as TextBox).Text;
-            string fecSalida = (grdReservas.Rows[e.RowIndex].FindControl("txtResFechaSalida") as TextBox).Text;
-            string fecVuelo = (grdReservas.Rows[e.RowIndex].FindControl("txtResFechaVuelo") as TextBox).Text;
+            string fecIngreso = (grdReservas.Rows[e.RowIndex].FindControl("CalendarResIngreso") as Calendar).SelectedDate.ToShortDateString(); 
+            string fecSalida = (grdReservas.Rows[e.RowIndex].FindControl("CalendarResSalida") as Calendar).SelectedDate.ToShortDateString();
+            string fecVuelo = (grdReservas.Rows[e.RowIndex].FindControl("CalendarVuelo") as Calendar).SelectedDate.ToShortDateString();
             string hotCodHotel = (grdReservas.Rows[e.RowIndex].FindControl("drpEstadoEdit") as DropDownList).Text;
             
 
@@ -305,6 +331,65 @@ namespace AppReservasSW.Views
                     ddList2.Items.Insert(0, new ListItem(Convert.ToString(vuelo.VUE_CODIGO), Convert.ToString(vuelo.VUE_CODIGO)));
                 }
             }
+        }
+
+        protected void drpEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void verCalendarioIngreso_Click(object sender, EventArgs e)
+        {
+            if (calendarioIngreso.Visible)
+            {
+                calendarioIngreso.Visible = false;
+            }
+            else
+            {
+                calendarioIngreso.Visible = true;
+            }
+        }
+
+        protected void calendarioIngreso_SelectionChanged(object sender, EventArgs e)
+        {
+            txtFechaIngreso.Text = calendarioIngreso.SelectedDate.ToShortDateString();
+            calendarioIngreso.Visible = false;
+        }
+
+        protected void vercalendarioSalida_Click(object sender, EventArgs e)
+        {
+            if (calendarioSalida.Visible)
+            {
+                calendarioSalida.Visible = false;
+            }
+            else
+            {
+                calendarioSalida.Visible = true;
+            }
+        }
+
+        protected void calendarioSalida_SelectionChanged(object sender, EventArgs e)
+        {
+            txtFechaSalida.Text = calendarioSalida.SelectedDate.ToShortDateString();
+            calendarioSalida.Visible = false;
+        }
+
+        protected void verVuelo_Click(object sender, EventArgs e)
+        {
+            if (calendarioVuelo.Visible)
+            {
+                calendarioVuelo.Visible = false;
+            }
+            else
+            {
+                calendarioVuelo.Visible = true;
+            }
+        }
+
+        protected void calendarioVuelo_SelectionChanged(object sender, EventArgs e)
+        {
+            txtFechaVuelo.Text = calendarioVuelo.SelectedDate.ToShortDateString();
+            calendarioVuelo.Visible = false;
         }
     }
 }

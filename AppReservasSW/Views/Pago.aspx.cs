@@ -130,6 +130,14 @@ namespace AppReservasSW.Views
                 lblStatus.Visible = true;
                 return false;
             }
+            if (Calendar2.SelectedDate.ToShortDateString().Equals("1/1/0001"))
+            {
+                lblStatus.Text = "Debe ingresar el codigo de la reservacion";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
+
 
             return true;
         }
@@ -144,6 +152,13 @@ namespace AppReservasSW.Views
             //    lblStatus.Visible = true;
             //    return false;
             //}
+            if (Calendar2.SelectedDate.ToShortDateString().Equals("1/1/0001"))
+            {
+                lblStatus.Text = "Debe ingresar el codigo de la reservacion";
+                lblStatus.ForeColor = Color.Maroon;
+                lblStatus.Visible = true;
+                return false;
+            }
 
             if (RES_CODIGO.IsNullOrWhiteSpace())
             {

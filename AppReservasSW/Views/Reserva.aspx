@@ -99,7 +99,14 @@
                     <%# Eval("RES_FECHA_INGRESO")%>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtResFechaIngreso" Text='<%# Eval("RES_FECHA_INGRESO") %>' runat="server" CssClass="GridViewEditRow" />
+        <asp:Calendar ID="CalendarResIngreso" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="100px"  Width="150px">
+            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+            <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+            <OtherMonthDayStyle ForeColor="#999999" />
+            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+            <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+            <TodayDayStyle BackColor="#CCCCCC" />
+        </asp:Calendar>
                 </EditItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtResFechaIngresoFooter" runat="server" />
@@ -111,7 +118,14 @@
                     <%# Eval("RES_FECHA_SALIDA")%>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtResFechaSalida" Text='<%# Eval("RES_FECHA_SALIDA") %>' runat="server" CssClass="GridViewEditRow" />
+                    <asp:Calendar ID="CalendarResSalida" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="100px"  Width="150px">
+            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+            <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+            <OtherMonthDayStyle ForeColor="#999999" />
+            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+            <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+            <TodayDayStyle BackColor="#CCCCCC" />
+        </asp:Calendar>
                 </EditItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtResFechaSalidaFooter" runat="server" />
@@ -123,7 +137,14 @@
                     <%# Eval("RES_FECHA_VUELO")%>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtResFechaVuelo" Text='<%# Eval("RES_FECHA_VUELO") %>' runat="server" CssClass="GridViewEditRow" />
+                    <asp:Calendar ID="CalendarVuelo" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="100px"  Width="150px">
+            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+            <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+            <OtherMonthDayStyle ForeColor="#999999" />
+            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+            <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+            <TodayDayStyle BackColor="#CCCCCC" />
+        </asp:Calendar>
                 </EditItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtResFechaVueloFooter" runat="server" />
@@ -185,28 +206,67 @@
     
         <div class="form-inline mb-3">
             <asp:Label ID="Label12" runat="server" Text="Fecha Ingreso" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtFechaIngreso" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:TextBox ID="txtFechaIngreso" runat="server" CssClass="form-control col-md-8" Enabled="False"></asp:TextBox>
         </div>
-
+        <br>
+        <div class="form-inline mb-3">
+            <asp:Button ID="verCalendarioIngreso" CssClass="btn btn-info" runat="server" Text="Ver calendario Entrada" BorderStyle="Ridge" OnClick="verCalendarioIngreso_Click" />
+            <br />
+            <asp:Calendar ID="calendarioIngreso" OnSelectionChanged="calendarioIngreso_SelectionChanged" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                <OtherMonthDayStyle ForeColor="#999999" />
+                <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                <TodayDayStyle BackColor="#CCCCCC" />
+            </asp:Calendar>
+        </div>
+        <br>
         <div class="form-inline mb-3">
             <asp:Label ID="Label7" runat="server" Text="Fecha Salida" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtFechaSalida" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:TextBox ID="txtFechaSalida" runat="server" CssClass="form-control col-md-8" Enabled="False"></asp:TextBox>
+        </div>
+        <div class="form-inline mb-3">
+            <asp:Button ID="vercalendarioSalida" CssClass="btn btn-info" runat="server" Text="Ver calendario Salida" BorderStyle="Ridge" OnClick="vercalendarioSalida_Click" />
+            <br />
+            <asp:Calendar ID="calendarioSalida" OnSelectionChanged="calendarioSalida_SelectionChanged" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                <OtherMonthDayStyle ForeColor="#999999" />
+                <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                <TodayDayStyle BackColor="#CCCCCC" />
+            </asp:Calendar>
         </div>
 
         <div class="form-inline mb-3">
             <asp:Label ID="Label14" runat="server" Text="Fecha Vuelo" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtFechaVuelo" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:TextBox ID="txtFechaVuelo" runat="server" CssClass="form-control col-md-8" Enabled="False"></asp:TextBox>
+        </div>
+        <div class="form-inline mb-3">
+            <asp:Button ID="verVuelo" CssClass="btn btn-info" runat="server" Text="Ver calendario vuelo" BorderStyle="Ridge" OnClick="verVuelo_Click" />
+            <br />
+            <asp:Calendar ID="calendarioVuelo" OnSelectionChanged="calendarioVuelo_SelectionChanged" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                <OtherMonthDayStyle ForeColor="#999999" />
+                <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                <TodayDayStyle BackColor="#CCCCCC" />
+            </asp:Calendar>
         </div>
 
         <div class="form-inline mb-3">
             <asp:Label  runat="server" Text="Estado" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:DropDownList ID="drpEstado" runat="server" CssClass="form-control col-md-8">
+            <asp:DropDownList ID="drpEstado" runat="server" CssClass="form-control col-md-8" OnSelectedIndexChanged="drpEstado_SelectedIndexChanged">
                 <asp:ListItem Selected="True" Value="A">Activa</asp:ListItem>
                 <asp:ListItem Value="D">Desactivada</asp:ListItem>
              </asp:DropDownList>
         </div>
-
+        
+       
         <div class="form-inline mt-3 mb-1">
+            &nbsp;<br />
             <asp:Button ID="btnAgregar" CssClass="btn btn-primary col-md-12 mt-3" runat="server" Text="Agregar" OnClick="btnIngresar_Click"  />
             <asp:Label ID="lblStatus" runat="server" Text="Label" ForeColor="#006600" Visible="False"></asp:Label>
         </div>
