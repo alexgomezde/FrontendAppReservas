@@ -15,6 +15,11 @@ namespace AppReservasSW.Views
     public partial class Factura : System.Web.UI.Page
     {
         IEnumerable<Models.Factura> facturas = new ObservableCollection<Models.Factura>();
+        
+        IEnumerable<Models.Pago> pagos = new ObservableCollection<Models.Pago>();
+        PagoManager pagoManager = new PagoManager();
+        
+        ReservaManager reservaManager = new ReservaManager();
         FacturaManager facturaManager = new FacturaManager();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +35,14 @@ namespace AppReservasSW.Views
             facturas = await facturaManager.ObtenerFacturas(VG.usuarioActual.CadenaToken);
             grdFacturas.DataSource = facturas.ToList();
             grdFacturas.DataBind();
+
+            drpCodigoPago.Items.Clear();
+            pagos = await pagoManager.obtenerPagos(VG.usuarioActual.CadenaToken);
+            foreach (Models.Pago pago in pagos)
+            {
+                drpCodigoPago.Items.Insert(0, new ListItem(Convert.ToString(pago.PAG_CODIGO), Convert.ToString(pago.PAG_CODIGO)));
+
+            }
         }
 
         protected async void btnAgregar_Click(object sender, EventArgs e)
@@ -40,7 +53,7 @@ namespace AppReservasSW.Views
                 Models.Factura factura = new Models.Factura()
                 {
 
-                    PAG_CODIGO = Convert.ToInt32(txtPagoCodigo.Text),
+                    PAG_CODIGO = Convert.ToInt32(drpCodigoPago.SelectedValue.ToString()),
                     FAC_COMPROBANTE = txtFacComprobante.Text,
                     FAC_ESTADO = drpDisponibilidad.SelectedValue.ToString()
                 };
@@ -105,7 +118,7 @@ namespace AppReservasSW.Views
         {
             Label lblCode = (Label)grdFacturas.Rows[e.RowIndex].Cells[0].FindControl("lblCodigoFactura");
 
-            string facCodigoPago = (grdFacturas.Rows[e.RowIndex].FindControl("txtPagoCodigoEdit") as TextBox).Text;
+            string facCodigoPago = (grdFacturas.Rows[e.RowIndex].FindControl("drpCodigoPagoEdit") as DropDownList).Text.Trim();
             string facComprobante = (grdFacturas.Rows[e.RowIndex].FindControl("txtFacComprobanteEdit") as TextBox).Text;
             string facEstado = (grdFacturas.Rows[e.RowIndex].FindControl("drpDisponibilidadEdit") as DropDownList).Text;
 
@@ -143,29 +156,25 @@ namespace AppReservasSW.Views
 
         }
 
-        protected void grdFacturas_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected async void grdFacturas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState & DataControlRowState.Edit) == DataControlRowState.Edit)
+            {
 
+                DropDownList ddList = (DropDownList)e.Row.FindControl("drpCodigoPagoEdit");
+
+                pagos = await pagoManager.obtenerPagos(VG.usuarioActual.CadenaToken);
+
+                foreach (Models.Pago pago in pagos)
+                {
+                    ddList.Items.Insert(0, new ListItem(Convert.ToString(pago.PAG_CODIGO), Convert.ToString(pago.PAG_CODIGO)));
+                }
+
+            }
         }
 
         private bool ValidarInsertar()
         {
-
-            if (txtPagoCodigo.Text.IsNullOrWhiteSpace())
-            {
-                lblStatus.Text = "Debe ingresar el código del pago";
-                lblStatus.ForeColor = Color.Maroon;
-                lblStatus.Visible = true;
-                return false;
-            }
-
-            if (txtPagoCodigo.Text.All(char.IsNumber) == false)
-            {
-                lblStatus.Text = "El código de pago debe ser un número";
-                lblStatus.ForeColor = Color.Maroon;
-                lblStatus.Visible = true;
-                return false;
-            }
 
             if (txtFacComprobante.Text.IsNullOrWhiteSpace())
             {

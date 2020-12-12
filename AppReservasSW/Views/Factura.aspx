@@ -26,11 +26,15 @@
 
             <asp:TemplateField HeaderText="Pago Código">
                 <ItemTemplate>
-                    <%# Eval("PAG_CODIGO") %>
+                    <asp:Label ID="lblCodigoPago" Text='<%# Eval("PAG_CODIGO") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtPagoCodigoEdit" Text='<%# Eval("PAG_CODIGO")%>' runat="server" />
+                    <asp:DropDownList ID="drpCodigoPagoEdit" runat="server">
+                    </asp:DropDownList>
                 </EditItemTemplate>
+                <FooterTemplate>
+                    <asp:TextBox ID="txtPagoCodigoFooter" runat="server" />
+                </FooterTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="Factura Comprobante">
@@ -76,9 +80,11 @@
     <div class="col-md-6">
 
         <div class="form-inline mb-3">
-            <asp:Label ID="Label1" runat="server" Text="Pago Código" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtPagoCodigo" runat="server" CssClass="form-control col-md-8"></asp:TextBox>
+            <asp:Label ID="Label9" runat="server" Text="Pago Código" CssClass="col-form-label col-md-4" ></asp:Label>
+            <asp:DropDownList ID="drpCodigoPago" runat="server" CssClass="form-control col-md-8">
+             </asp:DropDownList>
         </div>
+
 
         <div class="form-inline mb-3">
             <asp:Label ID="Label3" runat="server" Text="Comprobante Factura" CssClass="col-form-label col-md-4"></asp:Label>
