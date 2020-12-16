@@ -107,7 +107,7 @@ namespace AppReservasSW.Views
 
             if (txtpagoFecha.Text.IsNullOrWhiteSpace())
             {
-                lblStatus.Text = "Debe ingresar el código del usuario";
+                lblStatus.Text = "Debe ingresar la fecha";
                 lblStatus.ForeColor = Color.Maroon;
                 lblStatus.Visible = true;
                 return false;

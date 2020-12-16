@@ -43,35 +43,16 @@
                 </FooterTemplate>
             </asp:TemplateField>
 
-            <%--<asp:TemplateField HeaderText="Fecha de Pago">
+            <asp:TemplateField HeaderText="Fecha de Pago">
                 <ItemTemplate>
                     <%# Eval("PAG_FECHA")%>
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="txtPagFecha" Text='<%# Eval("PAG_FECHA") %>' runat="server" CssClass="GridViewEditRow" />
-
                 </EditItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtPagFechaFooter" runat="server" />
                 </FooterTemplate>
-            </asp:TemplateField>--%>
-
-            <asp:TemplateField HeaderText="Fecha de pago">
-                <ItemTemplate>
-                    <asp:Label ID="lbCalendario" Text='<%# Eval("PAG_FECHA") %>' runat="server" CssClass="GridViewEditRow" />
-                </ItemTemplate>
-                <EditItemTemplate>
-                    
-         <asp:Calendar ID="Calendar21" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
-            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-            <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-            <OtherMonthDayStyle ForeColor="#999999" />
-            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-            <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-            <TodayDayStyle BackColor="#CCCCCC" />
-        </asp:Calendar>
-                </EditItemTemplate>
-                
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="Tipo de Pago">
@@ -131,10 +112,24 @@
 
         <div class="form-inline mb-3">
             <asp:Label ID="Label3" runat="server" Text="Fecha Pago" CssClass="col-form-label col-md-4"></asp:Label>
-            <asp:TextBox ID="txtpagoFecha" runat="server" CssClass="form-control col-md-8" Enabled="False"></asp:TextBox>
+            <asp:TextBox ID="txtpagoFecha" runat="server" CssClass="form-control col-md-8" ClientIdMode="static" ></asp:TextBox>
         </div>
 
-        <asp:Button ID="Button2" CssClass="btn btn-info" runat="server" Text="Ver calendario" OnClick="Button2_Click"/>
+
+
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+            <link rel="stylesheet" href="/resources/demos/style.css" />
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(function () {
+                        $("#txtpagoFecha").datepicker();
+                    });
+                });
+            </script>
+            
 
         <div class="form-inline mb-3"> 
             <asp:Label ID="Label10" runat="server" Text="Tipo de pago" CssClass="col-form-label col-md-4"></asp:Label>
